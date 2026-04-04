@@ -241,6 +241,7 @@ export default function Gallery() {
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {/* Hover overlay */}
@@ -328,6 +329,8 @@ export default function Gallery() {
               key={filtered[lightbox.index]?.src}
               src={filtered[lightbox.index]?.src}
               alt={filtered[lightbox.index]?.alt}
+              loading="lazy"
+              decoding="async"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
