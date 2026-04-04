@@ -41,15 +41,21 @@ const images = [
   { src: '/pediatrics/IMG-20260404-WA0028.jpg', category: 'pediatrics', alt: 'Pediatric Care' },
 ];
 
+const INITIAL_COUNT = 6;
+
 export default function Gallery() {
   const [activeTab, setActiveTab] = useState('all');
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
   const [showVideo, setShowVideo] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const videoRef = useRef(null);
 
   const filtered = activeTab === 'all'
     ? images
     : images.filter((img) => img.category === activeTab);
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
+  const hasMore = filtered.length > INITIAL_COUNT;
 
   const openLightbox = (index) => {
     setLightbox({ open: true, index });
@@ -140,7 +146,7 @@ export default function Gallery() {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
+                onClick={() => { setActiveTab(cat.id); setShowAll(false); }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                   activeTab === cat.id
                     ? 'bg-white text-[var(--color-heading)] shadow-sm'
@@ -159,7 +165,7 @@ export default function Gallery() {
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((img, i) => (
+            {visible.map((img, i) => (
               <motion.div
                 key={img.src}
                 layout
@@ -185,25 +191,40 @@ export default function Gallery() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Category badge */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-6 text-center"
-        >
+        {/* Show More / Show Less */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-8 text-center"
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--color-border)] text-[var(--color-heading)] text-sm font-semibold rounded-xl hover:bg-[var(--color-bg-muted)] transition-colors"
+            >
+              {showAll ? (
+                <>Show Less</>  
+              ) : (
+                <>Show More ({filtered.length - INITIAL_COUNT} more photos)</>  
+              )}
+            </button>
+          </motion.div>
+        )}
+
+        {/* Photo count */}
+        <div className="mt-4 text-center">
           <p className="text-sm text-[var(--color-muted)]">
-            Showing {filtered.length} of {images.length} photos
+            Showing {visible.length} of {filtered.length} photos
             {activeTab !== 'all' && (
               <button
-                onClick={() => setActiveTab('all')}
+                onClick={() => { setActiveTab('all'); setShowAll(false); }}
                 className="ml-2 text-[var(--color-accent)] hover:underline font-medium"
               >
                 View all →
               </button>
             )}
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Lightbox */}
