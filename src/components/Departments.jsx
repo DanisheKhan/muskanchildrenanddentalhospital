@@ -152,7 +152,7 @@ export default function Departments() {
               {/* Doctor — 2 cols */}
               <div className="lg:col-span-2 lg:order-last">
                 <DoctorCard
-                  name="Dr. Tosif Khan"
+                  name="Dr. Tausif Khan"
                   title="MD, Pediatrician"
                   years={15}
                   bio="Specializes in comprehensive pediatric care from newborn to adolescent, preventive medicine, and family-centered care."

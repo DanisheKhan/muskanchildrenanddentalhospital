@@ -54,7 +54,12 @@ export default function Contact() {
                     <a href="tel:+919823482576" className="hover:text-[var(--color-heading)] transition-colors">
                       +91 9823482576
                     </a>{' '}
-                    <span className="text-[var(--color-muted)] block sm:inline mt-0.5 sm:mt-0">(Main / Emergency / Pediatrics)</span>
+                    <span className="text-[var(--color-muted)] block sm:inline mt-0.5 sm:mt-0">(Main / Emergency)</span>
+                    <br />
+                    <a href="tel:02582247576" className="hover:text-[var(--color-heading)] transition-colors">
+                      02582 247576
+                    </a>{' '}
+                    <span className="text-[var(--color-muted)]">(Landline)</span>
                   </p>
                 </div>
               </div>
@@ -67,8 +72,6 @@ export default function Contact() {
                   <p className="text-sm font-semibold text-[var(--color-heading)]">Email</p>
                   <p className="text-sm text-[var(--color-body)] mt-0.5 break-all">
                     info@muskanhospital.com
-                    <br />
-                    appointments@muskanhospital.com
                   </p>
                 </div>
               </div>
@@ -78,9 +81,15 @@ export default function Contact() {
                   <FaClock className="text-[var(--color-accent)] w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[var(--color-heading)]">Hours</p>
+                  <p className="text-sm font-semibold text-[var(--color-heading)]">Hours & Specialties</p>
                   <p className="text-sm text-[var(--color-body)] mt-0.5">
-                    Mon-Sat: 8:00 AM – 8:00 PM · Sunday: 9:00 AM – 2:00 PM · Emergency: 24/7
+                    <span className="font-medium text-[var(--color-heading)]">Specialties:</span> Multi Speciality
+                    <br />
+                    Mon-Sat: 8:00 AM – 8:00 PM · Emergency: 24/7
+                    <br />
+                    <span className="block mt-1.5 p-2 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded-lg text-xs leading-relaxed">
+                      <strong>Sunday Camp:</strong> Free checkup & medicine provided for pediatric patients, etc. (9:00 AM – 2:00 PM)
+                    </span>
                   </p>
                 </div>
               </div>

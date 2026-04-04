@@ -28,7 +28,7 @@ export default function FloatingButtons() {
               >
                 <FaWhatsapp className="w-5 h-5 relative z-10" />
                 <span className="absolute right-[calc(100%+12px)] px-2.5 py-1.5 rounded-lg bg-[var(--color-heading)] text-white text-[11px] font-medium whitespace-nowrap shadow-md pointer-events-none">
-                  Dr. Tosif (Pediatrics)
+                  Dr. Tausif (Pediatrics)
                 </span>
               </a>
 

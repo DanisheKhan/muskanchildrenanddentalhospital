@@ -72,9 +72,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-white/50">
                 <FaPhoneAlt className="w-3 h-3 mt-1 shrink-0 text-[var(--color-accent)]" />
-                <a href="tel:+919823482576" className="hover:text-white transition-colors">
-                  +91 9823482576
-                </a>
+                <div className="flex flex-col">
+                  <a href="tel:+919823482576" className="hover:text-white transition-colors">
+                    +91 9823482576
+                  </a>
+                  <a href="tel:02582247576" className="hover:text-white transition-colors mt-0.5">
+                    02582 247576 (Landline)
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2 text-sm text-white/50">
                 <FaEnvelope className="w-3 h-3 mt-1 shrink-0 text-[var(--color-accent)]" />
@@ -94,7 +99,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-white/50">
               <li>Mon-Sat: 8AM – 8PM</li>
-              <li>Sunday: 9AM – 2PM</li>
+              <li className="text-[var(--color-accent-light)]">Sunday: Free Camp (9AM–2PM)</li>
               <li className="text-[var(--color-accent-light)] font-medium">Emergency: 24/7</li>
             </ul>
           </div>

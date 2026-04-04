@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 
 const doctors = {
-  Pediatrics: 'Dr. Tosif Khan',
+  Pediatrics: 'Dr. Tausif Khan',
   Dental: 'Dr. Ramiz Khan',
 };
 
