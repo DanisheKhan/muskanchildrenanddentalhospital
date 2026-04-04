@@ -25,8 +25,13 @@ export default function Appointment() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const whatsappNumbers = {
+      Pediatrics: '919860833576',
+      Dental: '917030162446',
+    };
+    const targetNumber = whatsappNumbers[form.department];
     const msg = `🏥 *Appointment Request — Muskan Hospital*%0A%0A👤 *Name:* ${form.name}%0A📞 *Phone:* ${form.phone}%0A🏬 *Department:* ${form.department}%0A👨‍⚕️ *Doctor:* ${doctor}%0A📅 *Date:* ${form.date}%0A🕐 *Time:* ${form.time}%0A📝 *Notes:* ${form.notes || 'None'}`;
-    window.open(`https://wa.me/919823482576?text=${msg}`, '_blank');
+    window.open(`https://wa.me/${targetNumber}?text=${msg}`, '_blank');
   };
 
   const inputClasses =

@@ -61,21 +61,29 @@ export default function Hero() {
             className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <a
-              href="https://wa.me/919823482576"
+              href="https://wa.me/919860833576"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 bg-[var(--color-heading)] text-white text-base font-medium rounded-xl hover:bg-[var(--color-primary-light)] transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 px-5 py-3.5 sm:py-3 bg-[var(--color-heading)] text-white text-sm sm:text-base font-medium rounded-xl hover:bg-[var(--color-primary-light)] transition-colors w-full sm:w-auto"
             >
               <FaWhatsapp size={18} />
-              Book via WhatsApp
-              <HiArrowRight size={14} />
+              Pediatrics
+            </a>
+            <a
+              href="https://wa.me/917030162446"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-5 py-3.5 sm:py-3 bg-[var(--color-heading)] text-white text-sm sm:text-base font-medium rounded-xl hover:bg-[var(--color-primary-light)] transition-colors w-full sm:w-auto"
+            >
+              <FaWhatsapp size={18} />
+              Dental Care
             </a>
             <a
               href="tel:+919823482576"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 border border-[var(--color-border)] text-[var(--color-heading)] text-base font-medium rounded-xl hover:bg-[var(--color-bg-muted)] transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 px-5 py-3.5 sm:py-3 border border-[var(--color-border)] text-[var(--color-heading)] text-sm sm:text-base font-medium rounded-xl hover:bg-[var(--color-bg-muted)] transition-colors w-full sm:w-auto"
             >
               <MdPhone size={18} className="text-[var(--color-emergency)]" />
-              Emergency Call
+              Emergency
             </a>
           </motion.div>
 
