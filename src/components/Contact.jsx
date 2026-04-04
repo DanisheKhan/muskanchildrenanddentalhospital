@@ -54,7 +54,7 @@ export default function Contact() {
                     <a href="tel:+919823482576" className="hover:text-[var(--color-heading)] transition-colors">
                       +91 9823482576
                     </a>{' '}
-                    <span className="text-[var(--color-muted)]">(Main / Emergency / Pediatrics)</span>
+                    <span className="text-[var(--color-muted)] block sm:inline mt-0.5 sm:mt-0">(Main / Emergency / Pediatrics)</span>
                   </p>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[var(--color-heading)]">Email</p>
-                  <p className="text-sm text-[var(--color-body)] mt-0.5">
+                  <p className="text-sm text-[var(--color-body)] mt-0.5 break-all">
                     info@muskanhospital.com
                     <br />
                     appointments@muskanhospital.com

@@ -115,15 +115,15 @@ export default function Gallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <span className="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest">
+          <span className="text-[var(--color-accent)] font-semibold text-xs sm:text-sm uppercase tracking-widest">
             Gallery & Tour
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[var(--color-heading)] tracking-tight">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[var(--color-heading)] tracking-tight">
             Take a look inside our facility
           </h2>
-          <p className="mt-4 text-[var(--color-body)] max-w-xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-[var(--color-body)] max-w-xl mx-auto">
             Explore our state-of-the-art facilities and see why families trust us with their care.
           </p>
         </motion.div>
@@ -138,7 +138,7 @@ export default function Gallery() {
         >
           <div className="flex flex-col items-center">
             {/* Phone Frame */}
-            <div className="relative w-[280px] sm:w-[320px] mx-auto">
+            <div className="relative w-[75vw] max-w-[280px] sm:max-w-[320px] mx-auto">
               {/* Phone bezel */}
               <div className="relative bg-[var(--color-heading)] rounded-[2.5rem] p-2.5 shadow-2xl">
                 {/* Notch */}
@@ -202,13 +202,13 @@ export default function Gallery() {
         </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-[var(--color-bg-muted)] rounded-xl p-1 flex-wrap gap-0.5">
+        <div className="flex w-full overflow-x-auto scrollbar-hide pb-4 -mb-4 justify-start sm:justify-center mb-8 sm:mb-10 px-1">
+          <div className="inline-flex bg-[var(--color-bg-muted)] rounded-xl p-1 gap-1 min-w-max mx-auto sm:mx-0">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => { setActiveTab(cat.id); setShowAll(false); }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                   activeTab === cat.id
                     ? 'bg-white text-[var(--color-heading)] shadow-sm'
                     : 'text-[var(--color-muted)] hover:text-[var(--color-body)]'

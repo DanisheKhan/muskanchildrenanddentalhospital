@@ -37,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-6 text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[var(--color-heading)] leading-[1.1] tracking-tight"
+            className="mt-5 sm:mt-6 text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[var(--color-heading)] leading-[1.15] sm:leading-[1.1] tracking-tight"
           >
             Muskan Children's Hospital{' '}
             <span className="text-[var(--color-accent)]">&</span> Dental Care
@@ -58,13 +58,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <a
               href="https://wa.me/919823482576"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-heading)] text-white text-base font-medium rounded-xl hover:bg-[var(--color-primary-light)] transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 bg-[var(--color-heading)] text-white text-base font-medium rounded-xl hover:bg-[var(--color-primary-light)] transition-colors w-full sm:w-auto"
             >
               <FaWhatsapp size={18} />
               Book via WhatsApp
@@ -72,33 +72,14 @@ export default function Hero() {
             </a>
             <a
               href="tel:+919823482576"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--color-border)] text-[var(--color-heading)] text-base font-medium rounded-xl hover:bg-[var(--color-bg-muted)] transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:py-3 border border-[var(--color-border)] text-[var(--color-heading)] text-base font-medium rounded-xl hover:bg-[var(--color-bg-muted)] transition-colors w-full sm:w-auto"
             >
               <MdPhone size={18} className="text-[var(--color-emergency)]" />
               Emergency Call
             </a>
           </motion.div>
 
-          {/* Mini stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-14 flex gap-8 sm:gap-12"
-          >
-            {[
-              { value: '15+', label: 'Years' },
-              { value: '2', label: 'Specialists' },
-              { value: '24/7', label: 'Emergency' },
-            ].map((s) => (
-              <div key={s.label}>
-                <p className="text-3xl sm:text-4xl font-extrabold text-[var(--color-heading)]">
-                  {s.value}
-                </p>
-                <p className="text-sm text-[var(--color-muted)] mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
       </div>
     </section>

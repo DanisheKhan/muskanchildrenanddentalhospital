@@ -102,38 +102,38 @@ export default function Departments() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <span className="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest">
+          <span className="text-[var(--color-accent)] font-semibold text-xs sm:text-sm uppercase tracking-widest">
             Our Departments
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[var(--color-heading)] tracking-tight">
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[var(--color-heading)] tracking-tight">
             Specialized care for your family
           </h2>
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-12" id="doctors">
-          <div className="inline-flex bg-[var(--color-bg-muted)] rounded-xl p-1">
+        <div className="flex justify-center mb-10 sm:mb-12 px-2" id="doctors">
+          <div className="flex w-full max-w-sm bg-[var(--color-bg-muted)] rounded-xl p-1 gap-1">
             <button
               onClick={() => setTab('pediatrics')}
-              className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+              className={`flex-1 px-3 sm:px-5 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-1.5 ${
                 tab === 'pediatrics'
                   ? 'bg-white text-[var(--color-heading)] shadow-sm'
                   : 'text-[var(--color-muted)] hover:text-[var(--color-body)]'
               }`}
             >
-              👶 Pediatrics
+              <span className="text-base sm:text-sm">👶</span> Pediatrics
             </button>
             <button
               onClick={() => setTab('dental')}
-              className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+              className={`flex-1 px-3 sm:px-5 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-1.5 ${
                 tab === 'dental'
                   ? 'bg-white text-[var(--color-heading)] shadow-sm'
                   : 'text-[var(--color-muted)] hover:text-[var(--color-body)]'
               }`}
             >
-              🦷 Dental
+              <span className="text-base sm:text-sm">🦷</span> Dental
             </button>
           </div>
         </div>
