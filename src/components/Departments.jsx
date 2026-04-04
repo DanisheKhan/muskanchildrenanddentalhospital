@@ -147,10 +147,21 @@ export default function Departments() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
-              className="grid lg:grid-cols-5 gap-8"
+              className="flex flex-col lg:grid lg:grid-cols-5 gap-8"
             >
+              {/* Doctor — 2 cols */}
+              <div className="lg:col-span-2 lg:order-last">
+                <DoctorCard
+                  name="Dr. Tosif Khan"
+                  title="MD, Pediatrician"
+                  years={15}
+                  bio="Specializes in comprehensive pediatric care from newborn to adolescent, preventive medicine, and family-centered care."
+                  availability="Mon-Sat, 9:00 AM – 6:00 PM"
+                />
+              </div>
+
               {/* Services — 3 cols */}
-              <div className="lg:col-span-3 space-y-6">
+              <div className="lg:col-span-3 space-y-6 lg:order-first">
                 <h3 className="text-lg font-bold text-[var(--color-heading)]">Pediatric Services</h3>
                 <div className="grid sm:grid-cols-2 gap-2.5">
                   {pediatricServices.map((s, i) => (
@@ -172,17 +183,6 @@ export default function Departments() {
                   </ul>
                 </div>
               </div>
-
-              {/* Doctor — 2 cols */}
-              <div className="lg:col-span-2">
-                <DoctorCard
-                  name="Dr. Tosif Khan"
-                  title="MD, Pediatrician"
-                  years={15}
-                  bio="Specializes in comprehensive pediatric care from newborn to adolescent, preventive medicine, and family-centered care."
-                  availability="Mon-Sat, 9:00 AM – 6:00 PM"
-                />
-              </div>
             </motion.div>
           )}
 
@@ -193,10 +193,10 @@ export default function Departments() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
-              className="grid lg:grid-cols-5 gap-8"
+              className="flex flex-col lg:grid lg:grid-cols-5 gap-8"
             >
               {/* Doctor — 2 cols */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-2 lg:order-last">
                 <DoctorCard
                   name="Dr. Ramiz Khan"
                   title="MDS, Dental Surgeon"
@@ -207,7 +207,7 @@ export default function Departments() {
               </div>
 
               {/* Services — 3 cols */}
-              <div className="lg:col-span-3 space-y-6">
+              <div className="lg:col-span-3 space-y-6 lg:order-first">
                 <h3 className="text-lg font-bold text-[var(--color-heading)]">Dental Services</h3>
                 <div className="grid sm:grid-cols-2 gap-2.5">
                   {dentalServices.map((s, i) => (
