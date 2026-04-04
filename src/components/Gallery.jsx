@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiPlay, HiX, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { HiPlay, HiX, HiChevronLeft, HiChevronRight, HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 
 const categories = [
   { id: 'all', label: 'All' },
@@ -46,8 +46,9 @@ const INITIAL_COUNT = 6;
 export default function Gallery() {
   const [activeTab, setActiveTab] = useState('all');
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
-  const [showVideo, setShowVideo] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
 
   const filtered = activeTab === 'all'
@@ -56,6 +57,38 @@ export default function Gallery() {
 
   const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
   const hasMore = filtered.length > INITIAL_COUNT;
+
+  // Autoplay video when it scrolls into view
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+          setIsPlaying(true);
+        } else {
+          video.pause();
+          setIsPlaying(false);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   const openLightbox = (index) => {
     setLightbox({ open: true, index });
@@ -95,48 +128,76 @@ export default function Gallery() {
           </p>
         </motion.div>
 
-        {/* Video Section */}
+        {/* Video Reel Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14"
+          className="mb-16"
         >
-          <div className="relative rounded-2xl overflow-hidden border border-[var(--color-border)] bg-black aspect-video max-w-4xl mx-auto shadow-lg">
-            {!showVideo ? (
-              /* Thumbnail overlay */
-              <button
-                onClick={() => setShowVideo(true)}
-                className="group absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary)]/80 to-[var(--color-primary)]/60 cursor-pointer z-10"
-                aria-label="Play hospital tour video"
-              >
-                {/* Background poster — first hospital image */}
-                <img
-                  src="/hospital/IMG-20260404-WA0023.jpg"
-                  alt="Hospital Tour"
-                  className="absolute inset-0 w-full h-full object-cover opacity-40"
-                />
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <HiPlay className="w-10 h-10 sm:w-12 sm:h-12 text-white ml-1" />
+          <div className="flex flex-col items-center">
+            {/* Phone Frame */}
+            <div className="relative w-[280px] sm:w-[320px] mx-auto">
+              {/* Phone bezel */}
+              <div className="relative bg-[var(--color-heading)] rounded-[2.5rem] p-2.5 shadow-2xl">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-[var(--color-heading)] rounded-b-2xl z-20" />
+
+                {/* Screen */}
+                <div className="relative rounded-[2rem] overflow-hidden bg-black aspect-[9/16]">
+                  <video
+                    ref={videoRef}
+                    src="/video/VID-20250906-WA0002.mp4"
+                    muted={muted}
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                    onClick={togglePlay}
+                  />
+
+                  {/* Play/Pause overlay — shows briefly when paused */}
+                  {!isPlaying && (
+                    <button
+                      onClick={togglePlay}
+                      className="absolute inset-0 flex items-center justify-center bg-black/30 z-10 cursor-pointer transition-opacity"
+                      aria-label="Play video"
+                    >
+                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                        <HiPlay className="w-8 h-8 text-white ml-0.5" />
+                      </div>
+                    </button>
+                  )}
+
+                  {/* Bottom controls */}
+                  <div className="absolute bottom-4 right-4 z-20 flex flex-col gap-3">
+                    {/* Mute/Unmute */}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setMuted(!muted); }}
+                      className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white hover:bg-black/60 transition-colors cursor-pointer"
+                      aria-label={muted ? 'Unmute' : 'Mute'}
+                    >
+                      {muted ? <HiVolumeOff className="w-5 h-5" /> : <HiVolumeUp className="w-5 h-5" />}
+                    </button>
                   </div>
-                  <span className="text-white/80 text-sm font-medium tracking-wide">
-                    Watch Hospital Tour
-                  </span>
+
+                  {/* Top label */}
+                  <div className="absolute top-10 left-0 right-0 z-20 text-center">
+                    <span className="px-3 py-1.5 bg-black/30 backdrop-blur-sm rounded-full text-white/90 text-xs font-medium tracking-wide">
+                      🏥 Hospital Tour
+                    </span>
+                  </div>
                 </div>
-              </button>
-            ) : (
-              <video
-                ref={videoRef}
-                src="/video/VID-20250906-WA0002.mp4"
-                controls
-                autoPlay
-                className="w-full h-full object-contain"
-              >
-                Your browser does not support the video tag.
-              </video>
-            )}
+              </div>
+
+              {/* Decorative glow behind phone */}
+              <div className="absolute -inset-4 bg-[var(--color-accent)]/10 rounded-[3rem] blur-2xl -z-10" />
+            </div>
+
+            {/* Caption below phone */}
+            <p className="mt-6 text-sm text-[var(--color-muted)] text-center">
+              Tap to play · Click 🔊 for sound
+            </p>
           </div>
         </motion.div>
 
