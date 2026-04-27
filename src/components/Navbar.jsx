@@ -23,18 +23,15 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/80 backdrop-blur-md border-b border-[var(--color-border-light)]'
           : 'bg-white'
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 h-16">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2.5 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-[var(--color-accent)] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">M</span>
-          </div>
+          <img src="/logo.png" alt="Muskan Hospital Logo" className="h-10 w-auto" />
           <span className="text-base font-bold text-[var(--color-heading)] tracking-tight hidden sm:inline">
             Muskan Hospital
           </span>
@@ -74,9 +71,8 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 bg-white ${
-          mobileOpen ? 'max-h-[400px] border-t border-[var(--color-border-light)]' : 'max-h-0'
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-white ${mobileOpen ? 'max-h-[400px] border-t border-[var(--color-border-light)]' : 'max-h-0'
+          }`}
       >
         <ul className="flex flex-col px-5 py-3 gap-0.5">
           {navLinks.map((l) => (
